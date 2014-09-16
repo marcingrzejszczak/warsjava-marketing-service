@@ -1,0 +1,42 @@
+package pl.warsjawa.marketing
+
+import com.wordnik.swagger.annotations.Api
+import com.wordnik.swagger.annotations.ApiOperation
+import groovy.transform.CompileStatic
+import groovy.util.logging.Slf4j
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.*
+import pl.warsjawa.marketing.worker.PropagationWorker
+
+import javax.validation.constraints.NotNull
+import java.util.concurrent.Callable
+
+import static OfferMakerApi.*
+
+@CompileStatic
+@Slf4j
+@RestController
+@RequestMapping(API_URL)
+@Api(value = "marketingService", description = "Prepares additional offer for given loan")
+class MarketingController {
+
+    private final PropagationWorker propagationWorker
+
+    @Autowired
+    MarketingController(PropagationWorker propagationWorker) {
+        this.propagationWorker = propagationWorker
+    }
+
+    @RequestMapping(
+            value = MARKETING_APPLICATION_URL,
+            method = RequestMethod.PUT,
+            consumes = API_VERSION_1,
+            produces = API_VERSION_1)
+    @ApiOperation(value = "Async preparation of additional offer",
+            notes = "This will asynchronously prepares additional offer based on loan application and its status")
+    Callable<Void> prepareMarketingOffer(@PathVariable @NotNull String loanId, @RequestBody @NotNull LoanDetails loanDetails) {
+        return {
+            propagationWorker.prepareAdditionalOffer(loanId, loanDetails)
+        }
+    }
+}
