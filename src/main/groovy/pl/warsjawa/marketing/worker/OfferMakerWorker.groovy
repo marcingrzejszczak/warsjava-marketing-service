@@ -18,8 +18,8 @@ class OfferMakerWorker implements PropagationWorker {
     }
 
     @Override
-    void prepareAdditionalOffer(String loanId, LoanDetails loanDetails) {
-        log.info('Some action has been taken')
+    void prepareAdditionalOffer(String loanId, String loanDetails) {
+        log.info('Some action has been taken' + loanDetails)
     }
 
 }

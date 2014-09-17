@@ -17,7 +17,7 @@ import static OfferMakerApi.*
 @Slf4j
 @RestController
 @RequestMapping(API_URL)
-@Api(value = "marketingService", description = "Prepares additional offer for given loan")
+@Api(value = "marketingService", description = "Prepares additional offer for a given loan")
 class MarketingController {
 
     private final PropagationWorker propagationWorker
@@ -34,9 +34,9 @@ class MarketingController {
             produces = API_VERSION_1)
     @ApiOperation(value = "Async preparation of additional offer",
             notes = "This will asynchronously prepares additional offer based on loan application and its status")
-    Callable<Void> prepareMarketingOffer(@PathVariable @NotNull String loanId, @RequestBody @NotNull LoanDetails loanDetails) {
+    Callable<Void> prepareMarketingOffer(@PathVariable @NotNull String loanApplicationId, @RequestBody @NotNull String loanDetails) {
         return {
-            propagationWorker.prepareAdditionalOffer(loanId, loanDetails)
+            propagationWorker.prepareAdditionalOffer(loanApplicationId, loanDetails)
         }
     }
 }
