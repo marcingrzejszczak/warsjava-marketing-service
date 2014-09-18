@@ -1,4 +1,4 @@
-package pl.warsjawa.marketing.worker
+package pl.warsjawa.marketing.repository
 
 import com.ofg.infrastructure.web.resttemplate.fluent.ServiceRestClient
 import groovy.transform.CompileStatic
