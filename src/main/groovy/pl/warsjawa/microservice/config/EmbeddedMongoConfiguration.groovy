@@ -10,7 +10,6 @@ import de.flapdoodle.embed.process.config.IRuntimeConfig
 import de.flapdoodle.embed.process.io.directories.FixedPath
 import de.flapdoodle.embed.process.runtime.Network
 import groovy.transform.TypeChecked
-import groovy.util.logging.Slf4j
 import org.springframework.beans.factory.annotation.Value
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration
@@ -18,7 +17,6 @@ import org.springframework.context.annotation.Profile
 
 @TypeChecked
 @Configuration
-@Slf4j
 @Profile([BasicProfiles.PRODUCTION, BasicProfiles.DEVELOPMENT])
 class EmbeddedMongoConfiguration {
 
