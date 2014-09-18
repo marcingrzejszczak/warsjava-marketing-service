@@ -37,10 +37,7 @@ class EmbeddedMongoConfiguration {
             return artifactStore.absolutePath
         }
 
-        String object = artifactStore.mkdirs() ? artifactStore.absolutePath : System.properties['java.io.tmpdir']
-        log.info("artifactStore path: $object")
-
-        return object
+        return artifactStore.mkdirs() ? artifactStore.absolutePath : System.properties['java.io.tmpdir']
     }
 
     private IRuntimeConfig buildRuntimeConfig(String artifactStorePath) {
