@@ -21,11 +21,6 @@ class Offer {
 
     @Override
     public String toString() {
-        return "Offer{" +
-                "id='" + id + '\'' +
-                ", person=" + person +
-                ", loanDecision='" + loanDecision + '\'' +
-                ", offerText='" + offerText + '\'' +
-                '}';
+        return "Offer{id='$id', person=$person, loanDecision='$loanDecision', offerText='$offerText'}";
     }
 }
