@@ -97,7 +97,7 @@ dependencies {
     compile 'net.sf.ehcache:ehcache:2.8.3'
 
     // microservices
-    compile 'com.ofg:micro-infra-spring:0.2.2'
+    compile 'com.ofg:micro-infra-spring:0.3.0'
 
     compile 'de.flapdoodle.embed:de.flapdoodle.embed.mongo:1.46.1'
     compile 'org.springframework.data:spring-data-mongodb:1.6.0.RELEASE'
