@@ -52,7 +52,9 @@ class MarketingController {
             produces = API_VERSION_1)
     @ApiOperation(value = "Gets additional offer for given loan application",
             notes = "This finds additional offer prepared specially for given loan application")
-    Offer prepareMarketingOffer(@PathVariable @NotNull String loanApplicationId) {
-        return offerRepository.findOfferById(loanApplicationId)
+    Callable<Offer> prepareMarketingOffer(@PathVariable @NotNull String loanApplicationId) {
+        return {
+            offerRepository.findOfferById(loanApplicationId)
+        }
     }
 }
